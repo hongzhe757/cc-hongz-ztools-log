@@ -12,9 +12,38 @@
 			<!-- 输出日志的格式 -->
 			<PatternLayout pattern="[%d{HH:mm:ss.SSS}][%highlight{%-5level}] %class{36}:%L %M - %msg%xEx%n" disableAnsi="false" />
 		</Console>
+
+		<!-- 请求报文独立文件 -->
+		<File name="RequestFile" fileName="logs/message-in.log" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %c - %msg%n" />
+		</File>
+
+		<!-- 响应报文独立文件 -->
+		<File name="ResponseFile" fileName="logs/message-out.log" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %c - %msg%n" />
+		</File>
+
+		<!-- JSON 报文独立文件：msg.json 路由到这里，报文内容本身为 JSON，原样输出 -->
+		<File name="JsonFile" fileName="logs/message.json" append="false">
+			<PatternLayout pattern="%msg%n" />
+		</File>
 	</Appenders>
 
 	<Loggers>
+		<!-- 请求报文 logger：additivity=false 防止串到 root 主日志 -->
+		<logger name="msg.in" level="INFO" additivity="false">
+			<appender-ref ref="RequestFile" />
+		</logger>
+		<!-- 响应报文 logger -->
+		<logger name="msg.out" level="INFO" additivity="false">
+			<appender-ref ref="ResponseFile" />
+		</logger>
+
+		<!-- JSON 报文 logger -->
+		<logger name="msg.json" level="INFO" additivity="false">
+			<appender-ref ref="JsonFile" />
+		</logger>
+
 		<!-- 配置日志的根节点 -->
 		<root level="debug">
 			<appender-ref ref="Console" />
