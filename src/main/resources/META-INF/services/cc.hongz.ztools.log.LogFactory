@@ -1,0 +1,8 @@
+cc.hongz.ztools.log.dialect.logtube.LogTubeLogFactory
+cc.hongz.ztools.log.dialect.slf4j.Slf4jLogFactory
+cc.hongz.ztools.log.dialect.log4j2.Log4j2LogFactory
+cc.hongz.ztools.log.dialect.log4j.Log4jLogFactory
+cc.hongz.ztools.log.dialect.commons.ApacheCommonsLogFactory
+cc.hongz.ztools.log.dialect.tinylog.TinyLogFactory
+cc.hongz.ztools.log.dialect.tinylog.TinyLog2Factory
+cc.hongz.ztools.log.dialect.jboss.JbossLogFactory
