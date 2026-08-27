@@ -27,6 +27,11 @@
 		<File name="JsonFile" fileName="logs/message.json" append="false">
 			<PatternLayout pattern="%msg%n" />
 		</File>
+
+		<!-- 主日志文件：普通业务 / 项目日志 -->
+		<File name="MainFile" fileName="logs/app.log" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %c - %msg%n" />
+		</File>
 	</Appenders>
 
 	<Loggers>
@@ -44,9 +49,10 @@
 			<appender-ref ref="JsonFile" />
 		</logger>
 
-		<!-- 配置日志的根节点 -->
+		<!-- 配置日志的根节点：普通日志同时输出控制台 + 主日志文件 -->
 		<root level="debug">
 			<appender-ref ref="Console" />
+			<appender-ref ref="MainFile" />
 		</root>
 	</Loggers>
 
