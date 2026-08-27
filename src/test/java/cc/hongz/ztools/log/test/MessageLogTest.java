@@ -48,6 +48,12 @@ public class MessageLogTest {
                 Files.readAllBytes(Paths.get("logs/message-out.log")), StandardCharsets.UTF_8);
         assertTrue(outContent.contains("响应报文"), "message-out.log 应包含响应报文");
         assertFalse(outContent.contains("请求报文"), "message-out.log 不应包含请求报文");
+
+        // 验证主日志文件：含普通业务日志、不含报文
+        final String appContent = new String(
+                Files.readAllBytes(Paths.get("logs/app.log")), StandardCharsets.UTF_8);
+        assertTrue(appContent.contains("普通业务日志"), "app.log 应包含普通业务日志");
+        assertFalse(appContent.contains("请求报文"), "app.log 不应包含请求报文");
     }
 
     @Test
