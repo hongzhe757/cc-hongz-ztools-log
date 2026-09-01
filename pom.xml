@@ -38,11 +38,11 @@
             <artifactId>logback-classic</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- Log4j 1.x -->
+        <!-- Log4j 1.x（reload4j 替代，消除 log4j 1.2.17 多个 CVE） -->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>ch.qos.reload4j</groupId>
+            <artifactId>reload4j</artifactId>
+            <version>1.2.26</version>
             <optional>true</optional>
         </dependency>
         <!-- Log4j2 API -->
